@@ -19,14 +19,15 @@ serve(async (req) => {
 
     const authHeader = req.headers.get('Authorization');
     const serviceRoleKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
+    const triggerSecret = Deno.env.get('TELEGRAM_TRIGGER_SECRET') || 'd7b3f942-8e1d-4f1a-96b3-fc7d9214b7e8';
+    
     let isAuthorized = false;
 
-    if (record) {
-      isAuthorized = true;
-    } else if (authHeader) {
-      if (authHeader === `Bearer ${serviceRoleKey}`) {
+    if (authHeader) {
+      if (authHeader === `Bearer ${serviceRoleKey}` || authHeader === `Bearer ${triggerSecret}`) {
         isAuthorized = true;
       } else {
+        // Verify user session JWT and check if they are admin in profiles table
         const supabaseClient = createClient(
           Deno.env.get('SUPABASE_URL') ?? '',
           Deno.env.get('SUPABASE_ANON_KEY') ?? '',
@@ -47,6 +48,7 @@ serve(async (req) => {
     }
 
     if (!isAuthorized) {
+      console.warn("[send-telegram] Unauthorized access attempt detected.");
       return new Response(JSON.stringify({ error: 'Unauthorized' }), { 
         status: 401, 
         headers: { ...corsHeaders, 'Content-Type': 'application/json' } 

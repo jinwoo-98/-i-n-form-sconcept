@@ -1,0 +1,1 @@
+SELECT key FROM public.system_settings;
