@@ -1,0 +1,1 @@
+SELECT prosrc FROM pg_proc WHERE proname = 'fn_notify_telegram_on_booking';
