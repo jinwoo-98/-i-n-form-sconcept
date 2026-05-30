@@ -1,4 +1,4 @@
--- 1. Xóa trigger cũ chứa secret bị lộ
+-- 1. Xóa trigger cũ chứa logic xác thực kém an toàn
 DROP TRIGGER IF EXISTS notify_telegram_on_booking ON public.bookings;
 DROP FUNCTION IF EXISTS public.fn_notify_telegram_on_booking;
 
@@ -27,6 +27,3 @@ CREATE TRIGGER notify_telegram_on_booking
 AFTER INSERT ON public.bookings
 FOR EACH ROW
 EXECUTE FUNCTION public.fn_notify_telegram_on_booking();
-
--- Ghi chú bảo mật: Sau khi chạy lệnh này, secret sẽ không còn nằm trong code frontend 
--- và Edge Function sẽ chỉ chấp nhận cuộc gọi từ chính Database của bạn hoặc từ Admin có quyền truy cập.

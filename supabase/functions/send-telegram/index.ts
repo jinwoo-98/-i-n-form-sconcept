@@ -27,7 +27,7 @@ serve(async (req) => {
       if (authHeader === `Bearer ${serviceRoleKey}` || authHeader === `Bearer ${triggerSecret}`) {
         isAuthorized = true;
       } else {
-        // Verify user session JWT and check if they are admin in profiles table
+        // Xác minh JWT session của người dùng và kiểm tra quyền admin trong bảng profiles
         const supabaseClient = createClient(
           Deno.env.get('SUPABASE_URL') ?? '',
           Deno.env.get('SUPABASE_ANON_KEY') ?? '',
@@ -68,20 +68,17 @@ serve(async (req) => {
     } else if (record) {
       const formattedDate = record.appointment_date ? record.appointment_date.split('-').reverse().join('/') : 'Chưa chọn';
       
-      // THUẬT TOÁN BÓC TÁCH FILE ĐÍNH KÈM TRIỆT ĐỂ: Kết hợp Array, JSON parsing, và Regex URL Matcher
       let attachments = [];
       if (record.attachments) {
         if (Array.isArray(record.attachments)) {
           attachments = record.attachments;
         } else if (typeof record.attachments === 'string') {
           try {
-            // Thử parse nếu là chuỗi JSON array
             const parsed = JSON.parse(record.attachments);
             if (Array.isArray(parsed)) {
               attachments = parsed;
             }
           } catch {
-            // Nếu không phải JSON, sử dụng Regex để trích xuất toàn bộ URL hợp lệ bắt đầu bằng http/https
             const urlRegex = /(https?:\/\/[^\s,}"'\}]+)/g;
             const matches = record.attachments.match(urlRegex);
             if (matches) {
@@ -97,7 +94,6 @@ serve(async (req) => {
 
       const now = new Date().toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' });
       
-      // Tách thông tin Loại căn hộ & Mục đích sử dụng
       let roomType = record.room_type || 'N/A';
       let purpose = 'N/A';
       if (roomType.includes(' | Mục đích: ')) {
@@ -106,7 +102,6 @@ serve(async (req) => {
         purpose = parts[1];
       }
 
-      // Tách thông tin Giai đoạn & Tiến độ dự kiến
       let stage = record.stage || 'N/A';
       let timeline = 'N/A';
       if (stage.includes(' | Dự kiến: ')) {
@@ -115,7 +110,6 @@ serve(async (req) => {
         timeline = parts[1];
       }
 
-      // Định dạng phần ghi chú nhỏ cho Tiến độ dự kiến (nếu có phần mô tả trong ngoặc đơn)
       let formattedTimeline = timeline;
       if (timeline.includes('(') && timeline.endsWith(')')) {
         const openParenIdx = timeline.indexOf('(');
@@ -124,7 +118,6 @@ serve(async (req) => {
         formattedTimeline = `${label} <i>(${desc})</i>`;
       }
 
-      // Đảo phần in đậm: chỉ in đậm tiêu đề (bên trái dấu :), nội dung giá trị (bên phải dấu :) để bình thường
       messageText = `
 <b>✨ THÔNG BÁO LỊCH HẸN MỚI (SCONCEPT) ✨</b>
 ━━━━━━━━━━━━━━━━━━
