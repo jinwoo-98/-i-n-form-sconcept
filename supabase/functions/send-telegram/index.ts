@@ -19,12 +19,14 @@ serve(async (req) => {
 
     const authHeader = req.headers.get('Authorization');
     const serviceRoleKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
-    const triggerSecret = Deno.env.get('TELEGRAM_TRIGGER_SECRET') || 'd7b3f942-8e1d-4f1a-96b3-fc7d9214b7e8';
+    const triggerSecret = Deno.env.get('TELEGRAM_TRIGGER_SECRET');
     
     let isAuthorized = false;
 
     if (authHeader) {
-      if (authHeader === `Bearer ${serviceRoleKey}` || authHeader === `Bearer ${triggerSecret}`) {
+      if (authHeader === `Bearer ${serviceRoleKey}`) {
+        isAuthorized = true;
+      } else if (triggerSecret && authHeader === `Bearer ${triggerSecret}`) {
         isAuthorized = true;
       } else {
         // Xác minh JWT session của người dùng và kiểm tra quyền admin trong bảng profiles
