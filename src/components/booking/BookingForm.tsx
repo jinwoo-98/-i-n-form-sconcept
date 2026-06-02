@@ -450,8 +450,8 @@ const BookingForm = ({ onSuccess, onOpenSettings }: BookingFormProps) => {
         )}
       </div>
 
-      {/* Thanh nút bấm điều hướng được khóa ở đáy card bằng Flexbox, hoạt động mượt mà trên cả Mobile & Desktop */}
-      <div className="p-4 md:p-6 pt-3 border-t border-vugia-sand bg-white flex-shrink-0 relative z-10 shadow-[0_-4px_12px_rgba(0,0,0,0.02)] safe-area-pb">
+      {/* Thanh nút bấm điều hướng được khóa ở đáy card bằng Flexbox, bo góc dưới khít với viền cha */}
+      <div className="p-4 md:p-6 pt-3 border-t border-vugia-sand bg-white flex-shrink-0 relative z-10 shadow-[0_-4px_12px_rgba(0,0,0,0.02)] safe-area-pb rounded-b-[23px] md:rounded-b-[31px]">
         <div className="flex items-center gap-3 max-w-2xl mx-auto w-full px-5 md:px-0">
           {currentStep > 0 && (
             <Button
