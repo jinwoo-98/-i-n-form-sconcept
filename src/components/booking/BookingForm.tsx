@@ -387,7 +387,7 @@ const BookingForm = ({ onSuccess, onOpenSettings }: BookingFormProps) => {
   const isLastStep = currentStep === STEP_LABELS.length - 1;
 
   return (
-    <div className="w-full h-full min-h-0 bg-white rounded-[24px] md:rounded-[32px] shadow-xl md:shadow-2xl overflow-hidden relative border border-vugia-sand/60 flex flex-col">
+    <div className="w-full h-full min-h-0 bg-white rounded-[24px] md:rounded-[32px] shadow-xl md:shadow-2xl overflow-hidden relative border border-vugia-sand/60 flex flex-col [transform:translateZ(0)]">
       <div className="absolute top-3 right-3 md:top-4 md:right-4 z-20">
         <Button
           variant="ghost"
