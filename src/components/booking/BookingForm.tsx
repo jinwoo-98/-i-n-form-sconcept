@@ -387,7 +387,7 @@ const BookingForm = ({ onSuccess, onOpenSettings }: BookingFormProps) => {
   const isLastStep = currentStep === STEP_LABELS.length - 1;
 
   return (
-    <div className="w-full h-full min-h-[480px] md:min-h-0 bg-white rounded-[24px] md:rounded-[32px] shadow-xl md:shadow-2xl overflow-hidden relative border border-vugia-sand/60 flex flex-col">
+    <div className="w-full h-full min-h-0 bg-white rounded-[24px] md:rounded-[32px] shadow-xl md:shadow-2xl overflow-hidden relative border border-vugia-sand/60 flex flex-col">
       <div className="absolute top-3 right-3 md:top-4 md:right-4 z-20">
         <Button
           variant="ghost"
@@ -424,7 +424,7 @@ const BookingForm = ({ onSuccess, onOpenSettings }: BookingFormProps) => {
       <div className="relative flex-1 overflow-hidden flex flex-col">
         <div 
           ref={scrollRef}
-          className="flex-1 overflow-y-auto px-5 md:px-8 py-2 scrollbar-hide"
+          className="flex-1 overflow-y-auto px-5 md:px-8 pt-2 pb-24 md:pb-2 scrollbar-hide"
         >
           <div key={currentStep} className="animate-in fade-in slide-in-from-right-4 duration-300">
             {renderStep(currentStep)}
@@ -450,8 +450,9 @@ const BookingForm = ({ onSuccess, onOpenSettings }: BookingFormProps) => {
         )}
       </div>
 
-      <div className="p-4 md:p-6 pt-3 border-t border-vugia-sand bg-white flex-shrink-0">
-        <div className="flex items-center gap-3">
+      {/* Thanh nút bấm điều hướng siêu cố định trên Mobile, tự dãn nở trên Desktop */}
+      <div className="p-4 md:p-6 pt-3 border-t border-vugia-sand bg-white flex-shrink-0 md:relative fixed bottom-0 left-0 right-0 z-30 shadow-[0_-4px_12px_rgba(0,0,0,0.05)] md:shadow-none safe-area-pb">
+        <div className="flex items-center gap-3 max-w-2xl mx-auto w-full px-5 md:px-0">
           {currentStep > 0 && (
             <Button
               type="button"
