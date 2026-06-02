@@ -387,107 +387,111 @@ const BookingForm = ({ onSuccess, onOpenSettings }: BookingFormProps) => {
   const isLastStep = currentStep === STEP_LABELS.length - 1;
 
   return (
-    <div className="w-full h-full min-h-0 bg-white rounded-[24px] md:rounded-[32px] shadow-xl md:shadow-2xl overflow-hidden relative border border-vugia-sand/60 flex flex-col [transform:translateZ(0)]">
-      <div className="absolute top-3 right-3 md:top-4 md:right-4 z-20">
-        <Button
-          variant="ghost"
-          size="icon"
-          className="rounded-full bg-vugia-cream hover:bg-vugia-sand transition-colors h-8 w-8 md:h-9 md:w-9"
-          onClick={onOpenSettings}
-          aria-label="Cài đặt"
-        >
-          <Settings className="w-3.5 h-3.5 text-vugia-gold" />
-        </Button>
-      </div>
-
-      <div className="h-1.5 w-full bg-gradient-to-r from-vugia-navy via-vugia-accent to-vugia-navy flex-shrink-0" />
-
-      <div className="px-5 pt-4 md:px-8 md:pt-6 flex-shrink-0">
-        <div className="text-center mb-4">
-          <div className="inline-flex items-center gap-1 bg-vugia-accent text-vugia-navy text-[10px] md:text-[11px] font-bold px-3 py-0.5 rounded-full mb-2 tracking-[0.1em] uppercase">
-            <Zap className="w-3 h-3 fill-current" /> Miễn phí 100%
-          </div>
-          <h1 className="font-sans text-[20px] md:text-[26px] font-extrabold text-vugia-navy leading-tight tracking-tight">
-            Đặt lịch tư vấn nội thất
-          </h1>
+    <div className="w-full h-full min-h-0 bg-white rounded-[24px] md:rounded-[32px] shadow-xl md:shadow-2xl relative border border-vugia-sand/60 flex flex-col [transform:translateZ(0)]">
+      {/* Container phụ trách bo góc & cắt phần tràn (bao gồm bóng mờ của thanh điều hướng ở chân trang) */}
+      <div className="relative w-full h-full flex flex-col overflow-hidden rounded-[23px] md:rounded-[31px]">
+        
+        <div className="absolute top-3 right-3 md:top-4 md:right-4 z-20">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="rounded-full bg-vugia-cream hover:bg-vugia-sand transition-colors h-8 w-8 md:h-9 md:w-9"
+            onClick={onOpenSettings}
+            aria-label="Cài đặt"
+          >
+            <Settings className="w-3.5 h-3.5 text-vugia-gold" />
+          </Button>
         </div>
 
-        <StepIndicator
-          current={currentStep}
-          total={STEP_LABELS.length}
-          labels={STEP_LABELS}
-          completedSteps={completedSteps}
-          onStepClick={(s) => goToStep(s)}
-        />
-      </div>
+        <div className="h-1.5 w-full bg-gradient-to-r from-vugia-navy via-vugia-accent to-vugia-navy flex-shrink-0" />
 
-      <div className="relative flex-1 overflow-hidden flex flex-col">
-        <div 
-          ref={scrollRef}
-          className="flex-1 overflow-y-auto px-5 md:px-8 pt-2 pb-6 md:pb-2 scrollbar-hide"
-        >
-          <div key={currentStep} className="animate-in fade-in slide-in-from-right-4 duration-300">
-            {renderStep(currentStep)}
+        <div className="px-5 pt-4 md:px-8 md:pt-6 flex-shrink-0">
+          <div className="text-center mb-4">
+            <div className="inline-flex items-center gap-1 bg-vugia-accent text-vugia-navy text-[10px] md:text-[11px] font-bold px-3 py-0.5 rounded-full mb-2 tracking-[0.1em] uppercase">
+              <Zap className="w-3 h-3 fill-current" /> Miễn phí 100%
+            </div>
+            <h1 className="font-sans text-[20px] md:text-[26px] font-extrabold text-vugia-navy leading-tight tracking-tight">
+              Đặt lịch tư vấn nội thất
+            </h1>
           </div>
+
+          <StepIndicator
+            current={currentStep}
+            total={STEP_LABELS.length}
+            labels={STEP_LABELS}
+            completedSteps={completedSteps}
+            onStepClick={(s) => goToStep(s)}
+          />
         </div>
 
-        {showScrollHint && (
-          <>
-            <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white to-transparent pointer-events-none z-10" />
-            
-            <div className="absolute bottom-2 inset-x-0 flex justify-center z-20 pointer-events-none mobile-hide-on-focus">
-              <div 
-                className="animate-bounce cursor-pointer pointer-events-auto"
-                onClick={() => scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' })}
-              >
-                <div className="bg-vugia-navy/10 backdrop-blur-sm border border-vugia-navy/20 px-3 py-1 rounded-full flex items-center gap-1.5 shadow-sm hover:bg-vugia-navy/20 transition-colors">
-                  <span className="text-[10px] font-bold text-vugia-navy uppercase tracking-wider">Cuộn xuống</span>
-                  <ChevronDown className="w-3 h-3 text-vugia-navy" />
+        <div className="relative flex-1 overflow-hidden flex flex-col">
+          <div 
+            ref={scrollRef}
+            className="flex-1 overflow-y-auto px-5 md:px-8 pt-2 pb-6 md:pb-2 scrollbar-hide"
+          >
+            <div key={currentStep} className="animate-in fade-in slide-in-from-right-4 duration-300">
+              {renderStep(currentStep)}
+            </div>
+          </div>
+
+          {showScrollHint && (
+            <>
+              <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white to-transparent pointer-events-none z-10" />
+              
+              <div className="absolute bottom-2 inset-x-0 flex justify-center z-20 pointer-events-none mobile-hide-on-focus">
+                <div 
+                  className="animate-bounce cursor-pointer pointer-events-auto"
+                  onClick={() => scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' })}
+                >
+                  <div className="bg-vugia-navy/10 backdrop-blur-sm border border-vugia-navy/20 px-3 py-1 rounded-full flex items-center gap-1.5 shadow-sm hover:bg-vugia-navy/20 transition-colors">
+                    <span className="text-[10px] font-bold text-vugia-navy uppercase tracking-wider">Cuộn xuống</span>
+                    <ChevronDown className="w-3 h-3 text-vugia-navy" />
+                  </div>
                 </div>
               </div>
-            </div>
-          </>
-        )}
-      </div>
+            </>
+          )}
+        </div>
 
-      {/* Thanh nút bấm điều hướng được khóa ở đáy card bằng Flexbox, bo góc dưới khít với viền cha */}
-      <div className="p-4 md:p-6 pt-3 border-t border-vugia-sand bg-white flex-shrink-0 relative z-10 shadow-[0_-4px_12px_rgba(0,0,0,0.02)] safe-area-pb rounded-b-[23px] md:rounded-b-[31px]">
-        <div className="flex items-center gap-3 max-w-2xl mx-auto w-full px-5 md:px-0">
-          {currentStep > 0 && (
-            <Button
-              type="button"
-              variant="outline"
-              onClick={handleBack}
-              className="h-11 px-4 rounded-xl border-vugia-sand hover:bg-vugia-sand/50 text-vugia-navy font-bold text-[13px]"
-              disabled={isSubmitting}
-            >
-              <ChevronLeft className="w-4 h-4 mr-1" />
-              Quay lại
-            </Button>
-          )}
-          {!isLastStep ? (
-            <Button
-              type="button"
-              onClick={handleNext}
-              className="flex-1 h-11 rounded-xl bg-vugia-navy hover:bg-vugia-navy/90 text-vugia-cream font-bold text-[14px] md:text-[15px] shadow-md"
-            >
-              Tiếp tục
-              <ChevronRight className="w-4 h-4 ml-1.5" />
-            </Button>
-          ) : (
-            <Button
-              type="button"
-              onClick={handleSubmit}
-              disabled={isSubmitting}
-              className="flex-1 h-11 rounded-xl bg-vugia-navy hover:bg-vugia-navy/90 text-vugia-cream font-bold text-[14px] md:text-[15px] shadow-md"
-            >
-              {isSubmitting ? (
-                <><Loader2 className="w-4 h-4 animate-spin mr-2" /> Đang gửi...</>
-              ) : (
-                'Xác nhận đặt lịch'
-              )}
-            </Button>
-          )}
+        {/* Thanh nút bấm điều hướng được khóa ở đáy card bằng Flexbox, bo góc dưới khít với viền cha */}
+        <div className="p-4 md:p-6 pt-3 border-t border-vugia-sand bg-white flex-shrink-0 relative z-10 shadow-[0_-4px_12px_rgba(0,0,0,0.02)] safe-area-pb rounded-b-[23px] md:rounded-b-[31px]">
+          <div className="flex items-center gap-3 max-w-2xl mx-auto w-full px-5 md:px-0">
+            {currentStep > 0 && (
+              <Button
+                type="button"
+                variant="outline"
+                onClick={handleBack}
+                className="h-11 px-4 rounded-xl border-vugia-sand hover:bg-vugia-sand/50 text-vugia-navy font-bold text-[13px]"
+                disabled={isSubmitting}
+              >
+                <ChevronLeft className="w-4 h-4 mr-1" />
+                Quay lại
+              </Button>
+            )}
+            {!isLastStep ? (
+              <Button
+                type="button"
+                onClick={handleNext}
+                className="flex-1 h-11 rounded-xl bg-vugia-navy hover:bg-vugia-navy/90 text-vugia-cream font-bold text-[14px] md:text-[15px] shadow-md"
+              >
+                Tiếp tục
+                <ChevronRight className="w-4 h-4 ml-1.5" />
+              </Button>
+            ) : (
+              <Button
+                type="button"
+                onClick={handleSubmit}
+                disabled={isSubmitting}
+                className="flex-1 h-11 rounded-xl bg-vugia-navy hover:bg-vugia-navy/90 text-vugia-cream font-bold text-[14px] md:text-[15px] shadow-md"
+              >
+                {isSubmitting ? (
+                  <><Loader2 className="w-4 h-4 animate-spin mr-2" /> Đang gửi...</>
+                ) : (
+                  'Xác nhận đặt lịch'
+                )}
+              </Button>
+            )}
+          </div>
         </div>
       </div>
     </div>
