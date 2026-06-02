@@ -18,15 +18,15 @@ const Index = () => {
   };
 
   return (
-    <div className="app-container min-h-[100dvh] overflow-y-auto md:h-[100dvh] md:overflow-hidden bg-vugia-cream flex flex-col font-sans selection:bg-vugia-navy selection:text-vugia-cream">
-      <div className="flex-1 flex flex-col w-full max-w-2xl mx-auto px-4 py-2 md:py-4 overflow-visible md:overflow-hidden">
+    <div className="app-container h-[100dvh] overflow-hidden bg-vugia-cream flex flex-col font-sans selection:bg-vugia-navy selection:text-vugia-cream">
+      <div className="flex-1 flex flex-col w-full max-w-2xl mx-auto px-4 py-2 md:py-4 overflow-hidden h-full min-h-0">
         {view !== 'settings' && (
-          <div className="mobile-hide-on-focus">
+          <div className="mobile-hide-on-focus flex-shrink-0">
             <BookingHeader />
           </div>
         )}
 
-        <div className="flex-1 min-h-0 w-full">
+        <div className="flex-1 min-h-0 w-full overflow-hidden">
           {view === 'form' && (
             <BookingForm
               onSuccess={handleSuccess}

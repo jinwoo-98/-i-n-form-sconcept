@@ -424,7 +424,7 @@ const BookingForm = ({ onSuccess, onOpenSettings }: BookingFormProps) => {
       <div className="relative flex-1 overflow-hidden flex flex-col">
         <div 
           ref={scrollRef}
-          className="flex-1 overflow-y-auto px-5 md:px-8 pt-2 pb-24 md:pb-2 scrollbar-hide"
+          className="flex-1 overflow-y-auto px-5 md:px-8 pt-2 pb-6 md:pb-2 scrollbar-hide"
         >
           <div key={currentStep} className="animate-in fade-in slide-in-from-right-4 duration-300">
             {renderStep(currentStep)}
@@ -450,8 +450,8 @@ const BookingForm = ({ onSuccess, onOpenSettings }: BookingFormProps) => {
         )}
       </div>
 
-      {/* Thanh nút bấm điều hướng siêu cố định trên Mobile, tự dãn nở trên Desktop */}
-      <div className="p-4 md:p-6 pt-3 border-t border-vugia-sand bg-white flex-shrink-0 md:relative fixed bottom-0 left-0 right-0 z-30 shadow-[0_-4px_12px_rgba(0,0,0,0.05)] md:shadow-none safe-area-pb">
+      {/* Thanh nút bấm điều hướng được khóa ở đáy card bằng Flexbox, hoạt động mượt mà trên cả Mobile & Desktop */}
+      <div className="p-4 md:p-6 pt-3 border-t border-vugia-sand bg-white flex-shrink-0 relative z-10 shadow-[0_-4px_12px_rgba(0,0,0,0.02)] safe-area-pb">
         <div className="flex items-center gap-3 max-w-2xl mx-auto w-full px-5 md:px-0">
           {currentStep > 0 && (
             <Button
