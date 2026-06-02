@@ -19,7 +19,7 @@ const Index = () => {
 
   return (
     <div className="app-container h-[100dvh] overflow-hidden bg-vugia-cream flex flex-col font-sans selection:bg-vugia-navy selection:text-vugia-cream">
-      <div className="flex-1 flex flex-col w-full max-w-2xl mx-auto px-4 py-2 md:py-4 overflow-hidden h-full min-h-0">
+      <div className="flex-1 flex flex-col w-full max-w-2xl mx-auto px-4 pt-2 pb-0 md:py-4 overflow-hidden h-full min-h-0">
         {view !== 'settings' && (
           <div className="mobile-hide-on-focus flex-shrink-0">
             <BookingHeader />
@@ -48,7 +48,7 @@ const Index = () => {
           )}
         </div>
 
-        <div className="flex-shrink-0 mt-1 pb-1 opacity-60 hover:opacity-100 transition-opacity">
+        <div className="flex-shrink-0 py-3 flex items-center justify-center opacity-60 hover:opacity-100 transition-opacity">
           <MadeWithDyad />
         </div>
       </div>
