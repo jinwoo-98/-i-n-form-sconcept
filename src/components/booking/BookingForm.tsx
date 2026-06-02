@@ -126,7 +126,7 @@ const BookingForm = ({ onSuccess, onOpenSettings }: BookingFormProps) => {
   const isLastStep = currentStep === STEP_LABELS.length - 1;
 
   return (
-    <div className="w-full h-full min-h-0 bg-white rounded-[24px] md:rounded-[32px] shadow-xl md:shadow-2xl relative border border-vugia-sand/60 flex flex-col [transform:translateZ(0)]">
+    <div className="w-full h-full min-h-0 bg-white rounded-[24px] md:rounded-[32px] shadow-none relative border border-vugia-sand/60 flex flex-col [transform:translateZ(0)]">
       {/* Outer wrapper to handle rounded corner clipping for inner contents */}
       <div className="relative w-full h-full flex flex-col overflow-hidden rounded-[23px] md:rounded-[31px]">
         
@@ -193,14 +193,14 @@ const BookingForm = ({ onSuccess, onOpenSettings }: BookingFormProps) => {
         </div>
 
         {/* Action Button Navigation Panel anchored to bottom */}
-        <div className="p-4 md:p-6 pt-3 border-t border-vugia-sand bg-white flex-shrink-0 relative z-10 shadow-[0_-4px_12px_rgba(0,0,0,0.02)] safe-area-pb rounded-b-[23px] md:rounded-b-[31px]">
+        <div className="p-4 md:p-6 pt-3 border-t border-vugia-sand bg-white flex-shrink-0 relative z-10 shadow-none safe-area-pb rounded-b-[23px] md:rounded-b-[31px]">
           <div className="flex items-center gap-3 max-w-2xl mx-auto w-full px-5 md:px-0">
             {currentStep > 0 && (
               <Button
                 type="button"
                 variant="outline"
                 onClick={handleBack}
-                className="h-11 px-4 rounded-xl border-vugia-sand hover:bg-vugia-sand/50 text-vugia-navy font-bold text-[13px]"
+                className="h-11 px-4 rounded-xl border-vugia-sand hover:bg-vugia-sand/50 text-vugia-navy font-bold text-[13px] shadow-none"
                 disabled={isSubmitting}
               >
                 <ChevronLeft className="w-4 h-4 mr-1" />
@@ -211,7 +211,7 @@ const BookingForm = ({ onSuccess, onOpenSettings }: BookingFormProps) => {
               <Button
                 type="button"
                 onClick={handleNext}
-                className="flex-1 h-11 rounded-xl bg-vugia-navy hover:bg-vugia-navy/90 text-vugia-cream font-bold text-[14px] md:text-[15px] shadow-md"
+                className="flex-1 h-11 rounded-xl bg-vugia-navy hover:bg-vugia-navy/90 text-vugia-cream font-bold text-[14px] md:text-[15px] shadow-none"
               >
                 Tiếp tục
                 <ChevronRight className="w-4 h-4 ml-1.5" />
@@ -221,7 +221,7 @@ const BookingForm = ({ onSuccess, onOpenSettings }: BookingFormProps) => {
                 type="button"
                 onClick={handleSubmit}
                 disabled={isSubmitting}
-                className="flex-1 h-11 rounded-xl bg-vugia-navy hover:bg-vugia-navy/90 text-vugia-cream font-bold text-[14px] md:text-[15px] shadow-md"
+                className="flex-1 h-11 rounded-xl bg-vugia-navy hover:bg-vugia-navy/90 text-vugia-cream font-bold text-[14px] md:text-[15px] shadow-none"
               >
                 {isSubmitting ? (
                   <><Loader2 className="w-4 h-4 animate-spin mr-2" /> Đang gửi...</>
