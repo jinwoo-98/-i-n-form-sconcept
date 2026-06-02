@@ -21,7 +21,7 @@ const SuccessView = ({ data, onReset }: SuccessViewProps) => {
   const hotlineLink = "tel:0908386258";
 
   return (
-    <div className="max-w-2xl mx-auto bg-white rounded-[24px] md:rounded-[32px] shadow-xl md:shadow-2xl overflow-hidden border border-vugia-sand p-6 sm:p-10 md:p-14 text-center">
+    <div className="w-full h-full min-h-0 bg-white rounded-[24px] md:rounded-[32px] shadow-sm md:shadow-2xl overflow-y-auto scrollbar-hide border border-vugia-sand p-6 sm:p-10 md:p-14 text-center [transform:translateZ(0)]">
       {/* Icon thành công */}
       <div className="w-20 h-20 md:w-24 md:h-24 bg-vugia-accent rounded-full flex items-center justify-center mx-auto mb-6 md:mb-8 animate-in zoom-in duration-500">
         <CheckCircle2 className="w-10 h-10 md:w-12 md:h-12 text-vugia-navy" strokeWidth={2.5} />

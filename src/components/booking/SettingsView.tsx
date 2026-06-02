@@ -171,13 +171,13 @@ const SettingsView = ({ onClose }: SettingsViewProps) => {
 
   if (!isAuthenticated) {
     return (
-      <div className="max-w-md mx-auto bg-white rounded-[32px] shadow-2xl border border-vugia-sand p-12 text-center">
+      <div className="w-full h-full min-h-0 bg-white rounded-[24px] md:rounded-[32px] shadow-sm md:shadow-2xl overflow-y-auto scrollbar-hide border border-vugia-sand p-6 sm:p-12 text-center [transform:translateZ(0)] flex flex-col justify-center items-center">
         <div className="w-16 h-16 bg-vugia-cream rounded-full flex items-center justify-center mx-auto mb-6">
           <Lock className="w-8 h-8 text-vugia-navy" />
         </div>
         <h2 className="text-2xl font-bold text-slate-800 mb-2">Quản trị hệ thống</h2>
         <p className="text-[14px] text-vugia-gold mb-8">Đăng nhập để quản lý cấu hình</p>
-        <form onSubmit={handleLogin} className="space-y-4 text-left">
+        <form onSubmit={handleLogin} className="space-y-4 text-left w-full max-w-sm">
           <div className="space-y-2">
             <Label className="text-[12px] font-bold text-slate-600">Email quản trị</Label>
             <Input 
@@ -217,13 +217,13 @@ const SettingsView = ({ onClose }: SettingsViewProps) => {
 
   if (isAuthenticated && !isAdmin && !isLoading) {
     return (
-      <div className="max-w-md mx-auto bg-white rounded-[32px] shadow-2xl border border-vugia-sand p-12 text-center">
+      <div className="w-full h-full min-h-0 bg-white rounded-[24px] md:rounded-[32px] shadow-sm md:shadow-2xl overflow-y-auto scrollbar-hide border border-vugia-sand p-6 sm:p-12 text-center [transform:translateZ(0)] flex flex-col justify-center items-center">
         <div className="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-6">
           <Lock className="w-8 h-8 text-red-500" />
         </div>
         <h2 className="text-2xl font-bold text-slate-800 mb-2">Từ chối truy cập</h2>
         <p className="text-[14px] text-vugia-gold mb-8">Tài khoản của bạn không có quyền quản trị.</p>
-        <Button onClick={handleLogout} className="w-full h-14 bg-vugia-navy text-white rounded-2xl font-bold">
+        <Button onClick={handleLogout} className="w-full h-14 bg-vugia-navy text-white rounded-2xl font-bold max-w-sm">
           Đăng xuất
         </Button>
       </div>
@@ -231,7 +231,7 @@ const SettingsView = ({ onClose }: SettingsViewProps) => {
   }
 
   return (
-    <div className="max-w-2xl mx-auto bg-white rounded-[32px] shadow-2xl overflow-hidden border border-vugia-sand p-10">
+    <div className="w-full h-full min-h-0 bg-white rounded-[24px] md:rounded-[32px] shadow-sm md:shadow-2xl overflow-y-auto scrollbar-hide border border-vugia-sand p-6 sm:p-10 [transform:translateZ(0)]">
       <div className="flex items-center justify-between mb-10">
         <div className="flex items-center gap-4">
           <Button variant="ghost" size="icon" onClick={onClose} className="rounded-full">

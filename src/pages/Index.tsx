@@ -35,20 +35,16 @@ const Index = () => {
           )}
 
           {view === 'success' && (
-            <div className="h-full overflow-y-auto rounded-[24px] md:rounded-[32px] shadow-xl bg-white scrollbar-hide">
-              <SuccessView
-                data={submittedData}
-                onReset={() => setView('form')}
-              />
-            </div>
+            <SuccessView
+              data={submittedData}
+              onReset={() => setView('form')}
+            />
           )}
 
           {view === 'settings' && (
-            <div className="h-full overflow-y-auto rounded-[24px] md:rounded-[32px] shadow-xl bg-white scrollbar-hide">
-              <SettingsView
-                onClose={() => setView('form')}
-              />
-            </div>
+            <SettingsView
+              onClose={() => setView('form')}
+            />
           )}
         </div>
 
