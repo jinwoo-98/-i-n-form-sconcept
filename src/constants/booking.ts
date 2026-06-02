@@ -18,10 +18,10 @@ export const ROOM_NAMES: Record<string, string> = {
 };
 
 export const STAGES = [
-  { id: 'explore', icon: '🔍', title: 'Đang tìm ý tưởng', desc: 'Chưa biết chọn gì, cần tư vấn phong cách & ngân sách phù hợp', inc: '→ Video call 15 phút miễn phí' },
-  { id: 'design', icon: '📐', title: 'Đã có ý tưởng', desc: 'Có bản vẽ hoặc ảnh mẫu, cần lên mặt bằng & báo giá', inc: '→ AI Layout + Video call tư vấn' },
-  { id: 'render', icon: '🎨', title: 'Muốn xem phối cảnh 3D', desc: 'Muốn xem thử đồ đạc sẽ trông thế nào trong phòng thật', inc: '→ Render 3D + Video 3D phối cảnh' },
-  { id: 'order', icon: '✅', title: 'Sẵn sàng làm ngay', desc: 'Đã quyết định xong, cần báo giá chính thức & ký hợp đồng', inc: '→ Báo giá combo + Hợp đồng' }
+  { id: 'explore', icon: '🔍', title: 'Đang tìm ý tưởng', desc: 'Chưa biết chọn gì, cần tư vấn phong cách & ngân sách phù hợp', inc: 'Video call 15 phút miễn phí' },
+  { id: 'design', icon: '📐', title: 'Đã có ý tưởng', desc: 'Có bản vẽ hoặc ảnh mẫu, cần lên mặt bằng & báo giá', inc: 'AI Layout + Video call tư vấn' },
+  { id: 'render', icon: '🎨', title: 'Muốn xem phối cảnh 3D', desc: 'Muốn xem thử đồ đạc sẽ trông thế nào trong phòng thật', inc: 'Render 3D + Video 3D phối cảnh' },
+  { id: 'order', icon: '✅', title: 'Sẵn sàng làm ngay', desc: 'Đã quyết định xong, cần báo giá chính thức & ký hợp đồng', inc: 'Báo giá combo + Hợp đồng' }
 ];
 
 export const TIMELINE_OPTIONS = [

@@ -112,3 +112,11 @@
     padding-bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
   }
 }
+
+/* Ẩn tự động bằng CSS :has() khi người dùng đang tập trung gõ phím trên thiết bị di động */
+@media (max-width: 767px) {
+  .app-container:has(input:focus, textarea:focus, select:focus) .mobile-hide-on-focus {
+    display: none !important;
+  }
+}
+</dyad-css>

@@ -42,12 +42,12 @@ const AppointmentSection = ({ formData, setFormData, dates, slots, errors = {} }
                 "text-[13px] md:text-[15px] font-bold transition-colors leading-tight",
                 formData.consultType === t.id ? "text-vugia-navy" : "text-vugia-navy"
               )}>{t.title}</div>
+              {/* Nâng kích thước mô tả hình thức tư vấn lên text-[12px] md:text-[13px] */}
               <div className={cn(
-                "text-[11px] md:text-[12px] opacity-85 mt-1 leading-tight transition-colors hidden sm:block",
+                "text-[12px] md:text-[13px] opacity-85 mt-1 leading-tight transition-colors hidden sm:block",
                 formData.consultType === t.id ? "text-vugia-navy/70" : "text-slate-600"
               )}>{t.desc}</div>
               
-              {/* Indicator Dot */}
               {formData.consultType === t.id && (
                 <div className="absolute top-2.5 right-2.5 w-2 h-2 bg-vugia-navy rounded-full animate-pulse" />
               )}
@@ -77,20 +77,21 @@ const AppointmentSection = ({ formData, setFormData, dates, slots, errors = {} }
                 errors.date && !formData.date && "border-red-200 bg-red-50/30"
               )}
             >
+              {/* Nâng kích thước chữ hiển thị Thứ lên text-[12px] */}
               <div className={cn(
-                "text-[11px] font-bold uppercase tracking-wider transition-colors",
+                "text-[12px] font-bold uppercase tracking-wider transition-colors",
                 formData.date === d.key ? "text-vugia-navy/60" : "text-vugia-gold"
               )}>{d.dow}</div>
               <div className={cn(
                 "text-[22px] md:text-[26px] font-extrabold my-0.5 md:my-1 transition-colors tabular-nums leading-none",
                 formData.date === d.key ? "text-vugia-navy" : "text-vugia-navy"
               )}>{d.dom}</div>
+              {/* Nâng kích thước chữ hiển thị Tháng lên text-[12px] */}
               <div className={cn(
-                "text-[11px] font-medium transition-colors",
+                "text-[12px] font-medium transition-colors",
                 formData.date === d.key ? "text-vugia-navy/50" : "text-slate-500"
               )}>{d.mon}</div>
 
-              {/* Indicator Dot */}
               {formData.date === d.key && (
                 <div className="absolute top-2.5 right-2.5 w-2 h-2 bg-vugia-navy rounded-full animate-pulse" />
               )}
@@ -124,7 +125,6 @@ const AppointmentSection = ({ formData, setFormData, dates, slots, errors = {} }
                 {s.time}
                 {s.isPeak && <span className="absolute -top-2 -right-1 text-[13px] animate-pulse">🔥</span>}
                 
-                {/* Indicator Dot */}
                 {formData.time === s.time && (
                   <div className="absolute top-2 right-2 w-1.5 h-1.5 bg-vugia-navy rounded-full animate-pulse" />
                 )}

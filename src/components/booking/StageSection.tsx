@@ -58,15 +58,16 @@ const StageSection = ({
                 </div>
               </div>
 
-              <p className="text-[12px] md:text-[13px] text-slate-500 leading-snug mb-3 line-clamp-2">
+              <p className="text-[13px] md:text-[14px] text-slate-500 leading-snug mb-3 line-clamp-2">
                 {s.desc}
               </p>
 
               <div className={cn(
-                "mt-auto pt-2.5 border-t border-dashed w-full text-[11px] md:text-[12px] font-bold flex items-center gap-1.5",
+                "mt-auto pt-2.5 border-t border-dashed w-full text-[12px] md:text-[13px] font-bold flex items-center gap-1.5",
                 selectedStage === s.id ? "text-vugia-gold border-vugia-navy/20" : "text-vugia-gold/80 border-vugia-sand"
               )}>
-                <span className="text-[14px] leading-none">→</span>
+                {/* Sử dụng duy nhất 1 mũi tên đơn với style sắc nét của thương hiệu */}
+                <span className="text-vugia-gold font-extrabold flex-shrink-0 text-[14px] leading-none">→</span>
                 <span className="truncate">{s.inc}</span>
               </div>
 
@@ -81,14 +82,14 @@ const StageSection = ({
         )}
       </div>
 
-      {/* Phần 2: Thời gian dự kiến sử dụng nội thất */}
+      {/* Phần 2: Thời gian dự kiến sử dụng nội thất - Thiết kế 1 cột thông thoáng trên Mobile */}
       <div className="pt-4 border-t border-vugia-sand/40">
         <h3 className="text-[15px] md:text-[16px] font-bold text-vugia-navy mb-3 flex items-center gap-2">
           <span className="flex items-center justify-center w-5 h-5 rounded-full bg-vugia-navy text-white text-[11px] font-bold">2</span>
           Anh/Chị dự kiến sử dụng nội thất khi nào? <span className="text-red-500">*</span>
         </h3>
 
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {TIMELINE_OPTIONS.map((t) => (
             <button
               key={t.id}
@@ -105,13 +106,14 @@ const StageSection = ({
                 {t.icon}
               </div>
               <div className="min-w-0 flex-1">
+                {/* Loại bỏ hoàn toàn class truncate để hiển thị đầy đủ văn bản */}
                 <div className={cn(
-                  "text-[15px] md:text-[16px] font-extrabold leading-tight truncate",
+                  "text-[15px] md:text-[16px] font-extrabold leading-tight",
                   selectedTimeline === t.id ? "text-vugia-navy" : "text-slate-800"
                 )}>
                   {t.label}
                 </div>
-                <div className="text-[12px] md:text-[13px] text-slate-500 leading-snug mt-1 truncate">
+                <div className="text-[13px] md:text-[14px] text-slate-500 leading-snug mt-1">
                   {t.desc}
                 </div>
               </div>

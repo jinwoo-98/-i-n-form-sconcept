@@ -266,7 +266,6 @@ const BookingForm = ({ onSuccess, onOpenSettings }: BookingFormProps) => {
 
         if (uploadError) {
           console.error("Lỗi tải file lên Storage:", uploadError);
-          // Ném lỗi ra ngoài để dừng toàn bộ quá trình gửi biểu mẫu
           throw new Error(`Không thể tải lên tệp tin "${file.name}". Lỗi: ${uploadError.message}`);
         }
 
@@ -294,12 +293,10 @@ const BookingForm = ({ onSuccess, onOpenSettings }: BookingFormProps) => {
     setIsSubmitting(true);
 
     try {
-      // Quá trình tải tệp lên, nếu có bất kỳ lỗi nào xảy ra sẽ ngay lập tức dừng lại ở đây và nhảy vào khối catch
       const uploadedFiles = await uploadFiles();
 
       const stageTitle = STAGES.find(s => s.id === formData.stage)?.title || formData.stage;
       
-      // Lấy thông tin timeline option bao gồm cả label và desc
       const timelineOption = TIMELINE_OPTIONS.find(t => t.id === formData.timeline);
       const timelineTitle = timelineOption 
         ? `${timelineOption.label} (${timelineOption.desc})` 
@@ -341,7 +338,6 @@ const BookingForm = ({ onSuccess, onOpenSettings }: BookingFormProps) => {
       onSuccess({ ...formData, city: cityName, files: uploadedFiles, timestamp: new Date().toISOString() });
     } catch (error: any) {
       console.error("Error submitting booking:", error);
-      // Hiển thị thông báo lỗi rõ ràng và KHÔNG cho phép chuyển sang màn thành công
       showError(`Không thể hoàn tất đặt lịch: ${error.message || error}`);
     } finally {
       setIsSubmitting(false);
@@ -391,7 +387,7 @@ const BookingForm = ({ onSuccess, onOpenSettings }: BookingFormProps) => {
   const isLastStep = currentStep === STEP_LABELS.length - 1;
 
   return (
-    <div className="w-full h-full bg-white rounded-[24px] md:rounded-[32px] shadow-xl md:shadow-2xl overflow-hidden relative border border-vugia-sand/60 flex flex-col">
+    <div className="w-full h-full min-h-[480px] md:min-h-0 bg-white rounded-[24px] md:rounded-[32px] shadow-xl md:shadow-2xl overflow-hidden relative border border-vugia-sand/60 flex flex-col">
       <div className="absolute top-3 right-3 md:top-4 md:right-4 z-20">
         <Button
           variant="ghost"
@@ -425,7 +421,6 @@ const BookingForm = ({ onSuccess, onOpenSettings }: BookingFormProps) => {
         />
       </div>
 
-      {/* Container nội dung với hiệu ứng cuộn thông minh */}
       <div className="relative flex-1 overflow-hidden flex flex-col">
         <div 
           ref={scrollRef}
@@ -436,14 +431,11 @@ const BookingForm = ({ onSuccess, onOpenSettings }: BookingFormProps) => {
           </div>
         </div>
 
-        {/* Hiệu ứng Fading Edge & Floating Hint */}
         {showScrollHint && (
           <>
-            {/* Lớp mờ ở đáy */}
             <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white to-transparent pointer-events-none z-10" />
             
-            {/* Nút gợi ý cuộn - Căn giữa tuyệt đối bằng inset-x-0 flex */}
-            <div className="absolute bottom-2 inset-x-0 flex justify-center z-20 pointer-events-none">
+            <div className="absolute bottom-2 inset-x-0 flex justify-center z-20 pointer-events-none mobile-hide-on-focus">
               <div 
                 className="animate-bounce cursor-pointer pointer-events-auto"
                 onClick={() => scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' })}

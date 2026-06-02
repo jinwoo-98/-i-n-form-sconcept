@@ -18,9 +18,13 @@ const Index = () => {
   };
 
   return (
-    <div className="h-[100dvh] bg-vugia-cream flex flex-col overflow-hidden font-sans selection:bg-vugia-navy selection:text-vugia-cream">
-      <div className="flex-1 flex flex-col w-full max-w-2xl mx-auto px-4 py-2 md:py-4 overflow-hidden">
-        {view !== 'settings' && <BookingHeader />}
+    <div className="app-container min-h-[100dvh] overflow-y-auto md:h-[100dvh] md:overflow-hidden bg-vugia-cream flex flex-col font-sans selection:bg-vugia-navy selection:text-vugia-cream">
+      <div className="flex-1 flex flex-col w-full max-w-2xl mx-auto px-4 py-2 md:py-4 overflow-visible md:overflow-hidden">
+        {view !== 'settings' && (
+          <div className="mobile-hide-on-focus">
+            <BookingHeader />
+          </div>
+        )}
 
         <div className="flex-1 min-h-0 w-full">
           {view === 'form' && (
@@ -48,7 +52,7 @@ const Index = () => {
           )}
         </div>
 
-        <div className="flex-shrink-0 mt-2 opacity-60 hover:opacity-100 transition-opacity">
+        <div className="flex-shrink-0 mt-1 pb-1 opacity-60 hover:opacity-100 transition-opacity">
           <MadeWithDyad />
         </div>
       </div>

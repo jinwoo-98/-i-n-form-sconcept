@@ -80,7 +80,8 @@ const PersonalInfoSection = ({ formData, setFormData, errors, onBlur }: Personal
         {errors.email ? (
           <ErrorText msg={errors.email} />
         ) : (
-          <p className="text-[13px] text-slate-500 italic mt-1.5">
+          /* Nâng dòng gợi ý dưới ô Email lên text-[14px] */
+          <p className="text-[14px] text-slate-500 italic mt-1.5">
             Báo giá và phối cảnh sẽ được gửi qua email này (nếu có)
           </p>
         )}
